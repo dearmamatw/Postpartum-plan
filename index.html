@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>產後避難計劃 ·《媽媽，你睡了嗎？》</title>
+<meta name="description" content="給正在準備、或正在經歷產後的你。一份免費的產後避難計劃填寫表。">
+<style>
+  :root{
+    --cream:#FBF6EC;      /* 奶油底 */
+    --soft:#F5E4BE;       /* 淺黃帶 */
+    --amber:#C8912E;      /* 琥珀金 */
+    --amber-d:#A9741B;    /* 深琥珀 */
+    --ink:#403829;        /* 暖墨 */
+    --grey:#7A7060;       /* 暖灰 */
+    --grey-s:#A89C88;     /* 淺暖灰 */
+    --line:#E4D6BA;       /* 線條 */
+    --help:#FBEFD6;       /* 求助框底 */
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.85;
+    /* 夜裡一盞燈:中央微微暖光,四周漸暗 */
+    background-image:radial-gradient(ellipse 70% 55% at 50% 32%, #FEFBF3 0%, var(--cream) 55%, #F4ECD9 100%);
+    min-height:100vh;
+    padding:0 22px;
+  }
+  .wrap{max-width:560px;margin:0 auto;padding:64px 0 56px}
+
+  /* 頁首 */
+  .lamp{
+    width:44px;height:44px;margin:0 auto 30px;
+    border-radius:50%;
+    background:radial-gradient(circle at 50% 45%, #F6D98A 0%, var(--amber) 55%, transparent 72%);
+    box-shadow:0 0 44px 14px rgba(200,145,46,.28);
+  }
+  h1{
+    font-size:29px;font-weight:700;color:var(--amber-d);
+    text-align:center;letter-spacing:.02em;line-height:1.4;
+  }
+  .sub{
+    text-align:center;color:var(--grey-s);
+    font-size:15px;margin-top:12px;letter-spacing:.03em;
+  }
+  .rule{width:34px;height:2px;background:var(--soft);border-radius:2px;margin:34px auto}
+
+  /* 接住文字 */
+  .hold p{font-size:16.5px;color:var(--ink);margin-bottom:14px}
+  .hold .soft{color:var(--grey)}
+
+  /* 求助專線 */
+  .help{
+    background:var(--help);
+    border:1px solid var(--soft);
+    border-radius:14px;
+    padding:22px 22px 20px;
+    margin:34px 0;
+  }
+  .help h2{font-size:15.5px;color:var(--amber-d);font-weight:700;margin-bottom:10px}
+  .help p{font-size:13.5px;color:var(--grey);margin-bottom:14px;line-height:1.7}
+  .line-row{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+  .line-name{font-weight:700;color:var(--amber-d);font-size:15px}
+  .line-num{font-weight:700;color:var(--ink);font-size:16px;letter-spacing:.04em}
+  .line-hr{font-size:12px;color:var(--grey-s);width:100%;margin:0 0 12px}
+  .help .foot{font-size:12.5px;color:var(--grey-s);margin:6px 0 0}
+
+  /* 下載 */
+  .download{text-align:center;margin:40px 0 10px}
+  .download .note{font-size:14px;color:var(--grey);margin-bottom:20px;line-height:1.7}
+  .btn{
+    display:inline-block;
+    background:var(--amber);color:#fff;
+    font-size:17px;font-weight:700;letter-spacing:.03em;
+    text-decoration:none;
+    padding:16px 40px;border-radius:999px;
+    box-shadow:0 6px 18px rgba(200,145,46,.32);
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn:hover,.btn:focus{background:var(--amber-d);transform:translateY(-2px);box-shadow:0 9px 24px rgba(169,116,27,.36)}
+  .btn:focus-visible{outline:3px solid var(--amber-d);outline-offset:3px}
+  .count{margin-top:18px;font-size:12.5px;color:var(--grey-s)}
+  .count b{color:var(--grey);font-weight:700}
+
+  /* 頁尾 */
+  footer{
+    margin-top:46px;padding-top:22px;border-top:1px solid var(--line);
+    text-align:center;font-size:11.5px;color:var(--grey-s);line-height:1.7;
+  }
+
+  @media (max-width:400px){
+    .wrap{padding:48px 0 44px}
+    h1{font-size:25px}
+    .hold p{font-size:15.5px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .btn{transition:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="lamp" aria-hidden="true"></div>
+  <h1>產後避難計劃</h1>
+  <p class="sub">給正在準備、或正在經歷產後的你</p>
+
+  <div class="rule"></div>
+
+  <section class="hold">
+    <p>媽媽，不論你還在懷孕，或已經在產後的忙亂裡——這份計劃都是為你寫的。</p>
+    <p class="soft">產後那段時間可能會很累，有時會莫名低落。那不會是因為你不夠堅強，也不是你不夠愛孩子。這份計劃，是想先幫你把接住自己的網準備好。</p>
+  </section>
+
+  <!-- 求助專線:接住優先,放在下載之前 -->
+  <section class="help" aria-label="求助專線">
+    <h2>先把這個記下來，萬一產後撐不住時</h2>
+    <p>如果產後你出現持續低落，或閃過不想活、無法照顧自己與孩子的念頭，請不要一個人撐。這兩支電話，先存好：</p>
+    <div class="line-row">
+      <span class="line-name">安心專線</span>
+      <span class="line-num">1925</span>
+    </div>
+    <p class="line-hr">24 小時 · 心理諮詢與情緒支持</p>
+    <div class="line-row">
+      <span class="line-name">孕產婦關懷專線</span>
+      <span class="line-num">0800-870-870</span>
+    </div>
+    <p class="line-hr">週一至週五 9:00–17:00（國定假日除外）· 孕產育兒諮詢</p>
+    <p class="foot">求助不是軟弱，是你還在為自己和孩子負責。</p>
+  </section>
+
+  <!-- 下載 -->
+  <section class="download">
+    <p class="note">這是一份可以填寫的表單。你不需要一次填完——翻到哪一頁對你有用，就從哪裡開始。準備好了，就下載它。</p>
+    <!-- ↓↓↓ 把 href 換成 PDF 實際檔名（若同資料夾,保持這樣即可） -->
+    <a class="btn" href="postpartum-sanctuary-plan.pdf" download="產後避難計劃.pdf">下載產後避難計劃</a>
+
+    <!-- 下載計數:免費服務 CountAPI,不需後端。namespace/key 可自訂。 -->
+    <p class="count">目前已有 <b id="dl-count">…</b> 位媽媽收下這份計劃</p>
+  </section>
+
+  <footer>
+    本表啟發自 Kimberly Ann Johnson《The Fourth Trimester》，<br>
+    由《媽媽，你睡了嗎？》依台灣情境原創設計，僅供參考。
+  </footer>
+
+</div>
+
+<script>
+  // 下載計數(用免費的 CountAPI 替代服務,純前端、無需後端、免金鑰)
+  // 原 countapi.xyz 已停止服務,改用社群維護的替代品。
+  // 每次有人「點下載按鈕」就 +1;頁面載入時顯示目前數字。
+  // KEY 全站唯一即可,建議用夠獨特的字串避免和別人撞號。
+  const BASE = "https://countapi.mileshilliard.com/api/v1";
+  const KEY  = "mama-podcast-sanctuary-plan-2026";   // 這份表單的唯一 key,可自行修改
+  const elCount = document.getElementById("dl-count");
+
+  // 載入時先讀目前數字(不加值)
+  fetch(`${BASE}/get/${KEY}`)
+    .then(r => r.json())
+    .then(d => { if (typeof d.value === "number") elCount.textContent = d.value; })
+    .catch(() => { elCount.textContent = "許多"; });
+
+  // 點下載時 +1
+  document.querySelector(".btn").addEventListener("click", () => {
+    fetch(`${BASE}/hit/${KEY}`)
+      .then(r => r.json())
+      .then(d => { if (typeof d.value === "number") elCount.textContent = d.value; })
+      .catch(() => {});
+  });
+</script>
+</body>
+</html>
