@@ -4,111 +4,244 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>產後避難計劃 ·《媽媽，你睡了嗎？》</title>
-<meta name="description" content="給正在準備、或正在經歷產後的你。一份免費的產後避難計劃填寫表。">
+<meta name="description" content="一個小小的逃脫遊戲，出口是一份免費、可填寫的產後避難計劃。">
 
 <!-- Open Graph / social preview -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dearmamatw.github.io/Postpartum-plan/">
 <meta property="og:title" content="產後避難計劃 ·《媽媽，你睡了嗎？》">
-<meta property="og:description" content="在最累的時刻，給自己留一盞燈。給正在準備、或正在經歷產後的你，一份免費、可填寫的產後避難計劃。">
+<meta property="og:description" content="在最累的時刻，給自己留一盞燈。一個小小的逃脫遊戲，出口是一份免費、可填寫的產後避難計劃。">
 <meta property="og:image" content="https://dearmamatw.github.io/Postpartum-plan/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="產後避難計劃 · 給正在準備、或正在經歷產後的你">
+<meta property="og:image:alt" content="產後避難計劃 · 在最累的時刻，給自己留一盞燈">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:site_name" content="媽媽，你睡了嗎？">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="產後避難計劃 ·《媽媽，你睡了嗎？》">
-<meta name="twitter:description" content="在最累的時刻，給自己留一盞燈。一份免費、可填寫的產後避難計劃。">
+<meta name="twitter:description" content="在最累的時刻，給自己留一盞燈。一個小小的逃脫遊戲，出口是一份免費、可填寫的產後避難計劃。">
 <meta name="twitter:image" content="https://dearmamatw.github.io/Postpartum-plan/og-image.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
+  /* 霞鶩文楷 TC v1.520 子集字型（與 og 圖同一份字型檔） */
+  @font-face{
+    font-family:"LXGW WenKai TC";
+    src:url("wenkai-tc-regular-subset.woff2") format("woff2");
+    font-weight:400;font-style:normal;font-display:swap;
+  }
+  @font-face{
+    font-family:"LXGW WenKai TC";
+    src:url("wenkai-tc-medium-subset.woff2") format("woff2");
+    font-weight:500 700;font-style:normal;font-display:swap;
+  }
   :root{
     --cream:#FBF6EC; --cream-2:#F5ECDA; --soft:#EFE2C6;
-    --amber:#C8912E; --amber-d:#9E6E1C; --clay:#B07A4A;
-    --ink:#3A3222; --body:#6B6252; --faint:#A99C86;
-    --line:#E4D6BA; --help:#FBEFD6;
+    --amber:#C8912E; --amber-d:#9E6E1C; --gold:#F6C560;
+    --ink:#3A3222; --night:#403829; --night-2:#4A4130;
+    --body:#6B6252; --faint:#A99C86; --line:#E4D6BA; --help:#FBEFD6;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-text-size-adjust:100%}
   body{
-    font-family:"Noto Sans TC",sans-serif; color:var(--body); line-height:1.9;
+    font-family:"LXGW WenKai TC",sans-serif;color:var(--body);line-height:1.85;
     background:var(--cream);
-    background-image:radial-gradient(ellipse 75% 50% at 50% 26%, #FEFCF5 0%, var(--cream) 58%, #F3EAD6 100%);
-    min-height:100vh; padding:0 22px;
+    background-image:radial-gradient(ellipse 75% 50% at 50% 20%, #FEFCF5 0%, var(--cream) 58%, #F3EAD6 100%);
+    min-height:100vh;padding:0 18px 40px;
   }
-  .wrap{max-width:720px;margin:0 auto;padding:70px 0 60px}
-  .eyebrow{text-align:center;color:var(--amber);font-size:16px;font-weight:600;letter-spacing:.7em;text-indent:.7em;margin-bottom:26px}
-  h1{font-family:"Noto Serif TC",serif;text-align:center;color:var(--ink);font-size:44px;font-weight:700;line-height:1.35;letter-spacing:.02em}
-  .lede{text-align:center;color:var(--body);font-size:16.5px;margin-top:26px;line-height:1.95}
-  .lede .thin{color:var(--faint)}
-  .pill{display:block;width:max-content;max-width:100%;margin:34px auto 0;background:var(--cream-2);border:1px solid var(--soft);border-radius:999px;padding:14px 30px;text-align:center;color:var(--body);font-size:15px}
-  .pill b{color:var(--amber-d);font-weight:700;font-size:17px;margin:0 4px}
-  .pill .flame{margin-right:6px}
-  .rule{width:38px;height:2px;background:var(--soft);border-radius:2px;margin:46px auto}
-  .hold{max-width:600px;margin:0 auto}
-  .hold p{font-size:16.5px;color:var(--ink);margin-bottom:15px;text-align:center}
-  .hold p.soft{color:var(--body)}
-  .card{background:var(--cream-2);border:1px solid var(--soft);border-radius:20px;padding:38px 34px;margin:40px auto 0;max-width:600px;text-align:center;box-shadow:0 10px 30px rgba(160,122,74,.08)}
-  .card .k{font-family:"Noto Serif TC",serif;color:var(--ink);font-size:21px;font-weight:600;margin-bottom:10px}
-  .card .d{font-size:14.5px;color:var(--body);margin-bottom:26px;line-height:1.8}
-  .btn{display:inline-block;background:var(--amber);color:#fff;font-size:17px;font-weight:700;letter-spacing:.03em;text-decoration:none;padding:16px 44px;border-radius:999px;box-shadow:0 6px 18px rgba(200,145,46,.3);transition:transform .15s ease, box-shadow .15s ease, background .15s ease}
-  .btn:hover,.btn:focus{background:var(--amber-d);transform:translateY(-2px);box-shadow:0 9px 24px rgba(158,110,28,.34)}
+  .wrap{max-width:640px;margin:0 auto;padding:26px 0 20px}
+
+  /* ---- top bar: skip + demo badge ---- */
+  .topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+  .skip{font-size:13.5px;color:var(--amber-d);text-decoration:none;font-weight:700;border-bottom:1.5px solid var(--soft);padding-bottom:1px}
+  .skip:hover{border-bottom-color:var(--amber)}
+
+  .eyebrow{text-align:center;color:var(--amber);font-size:14px;font-weight:600;letter-spacing:.55em;text-indent:.55em;margin:20px 0 14px}
+  h1{font-family:"LXGW WenKai TC",serif;text-align:center;color:var(--ink);font-size:30px;font-weight:700;line-height:1.4}
+  .lede{text-align:center;font-size:15px;margin-top:12px;color:var(--body)}
+
+  /* ---- progress lamps ---- */
+  .lamps{display:flex;justify-content:center;gap:26px;margin:26px 0 8px}
+  .lamp{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;color:var(--faint)}
+  .lamp .bulb{width:26px;height:26px;border-radius:50%;background:var(--cream-2);border:2px solid var(--line);transition:all .5s ease;position:relative}
+  .lamp.lit .bulb{background:var(--gold);border-color:var(--amber);box-shadow:0 0 18px 4px rgba(246,197,96,.55)}
+  .lamp.lit{color:var(--amber-d);font-weight:700}
+
+  /* ---- stage (the room) ---- */
+  .stage{
+    background:var(--night);
+    border-radius:22px;padding:34px 26px 30px;margin:16px auto 0;
+    box-shadow:0 14px 40px rgba(64,56,41,.28), inset 0 0 60px rgba(0,0,0,.18);
+    color:#EFE6D2;position:relative;overflow:hidden;
+    min-height:380px;display:flex;flex-direction:column;justify-content:center;
+  }
+  .stage::before{ /* faint window moonlight */
+    content:"";position:absolute;top:18px;right:22px;width:56px;height:56px;border-radius:50%;
+    background:radial-gradient(circle,#F6E9C8 0%,rgba(246,233,200,.12) 60%,transparent 75%);
+    opacity:.7;pointer-events:none;
+  }
+  .scene{display:none;animation:fadein .5s ease}
+  .scene.on{display:block}
+  @keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .stage h2{font-family:"LXGW WenKai TC",serif;font-size:21px;color:#F6E9C8;font-weight:600;margin-bottom:6px;text-align:center}
+  .stage .hint{font-size:13.5px;color:#C9BC9E;text-align:center;margin-bottom:22px}
+  .stage .door-tag{display:block;text-align:center;font-size:12px;letter-spacing:.4em;text-indent:.4em;color:#A9915B;margin-bottom:10px}
+
+  /* choices */
+  .chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .chip{
+    background:var(--night-2);border:1.5px solid #6B5D3F;border-radius:16px;
+    color:#F1E7CF;font-size:15px;padding:13px 20px;cursor:pointer;
+    transition:transform .15s ease, background .2s, border-color .2s;
+    font-family:"LXGW WenKai TC",sans-serif;
+  }
+  .chip:hover{transform:translateY(-2px);border-color:var(--gold)}
+  .chip:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  .chip.picked{background:var(--amber);border-color:var(--gold);color:#fff;font-weight:700}
+  .chip.gone{opacity:0;transform:scale(.6) rotate(6deg);pointer-events:none;transition:all .55s ease}
+
+  /* candle scene */
+  .candle-zone{display:flex;flex-direction:column;align-items:center;gap:14px;padding:8px 0 2px}
+  .candle{cursor:pointer;background:none;border:none;padding:14px}
+  .candle:focus-visible{outline:3px solid var(--gold);outline-offset:4px;border-radius:12px}
+  .flame{opacity:0;transform-origin:50% 90%;transition:opacity .6s ease}
+  .candle.lit .flame{opacity:1;animation:flick 1.6s ease-in-out infinite alternate}
+  @keyframes flick{from{transform:scale(1) rotate(-1.5deg)}to{transform:scale(1.06) rotate(1.5deg)}}
+  .glowring{opacity:0;transition:opacity .8s ease}
+  .candle.lit .glowring{opacity:1}
+
+  .feedback{min-height:26px;text-align:center;font-size:14px;color:#F6E9C8;margin-top:16px;font-weight:500}
+
+  .nextbtn{
+    display:block;margin:20px auto 0;background:var(--amber);color:#fff;border:none;border-radius:999px;
+    font-size:15.5px;font-weight:700;letter-spacing:.03em;padding:13px 36px;cursor:pointer;
+    box-shadow:0 6px 18px rgba(200,145,46,.35);transition:transform .15s, background .15s;
+    font-family:"LXGW WenKai TC",sans-serif;opacity:0;pointer-events:none;
+  }
+  .nextbtn.show{opacity:1;pointer-events:auto}
+  .nextbtn:hover{background:var(--amber-d);transform:translateY(-2px)}
+  .nextbtn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+  /* ---- exit / download ---- */
+  .exit-card{
+    background:var(--cream-2);border:1px solid var(--soft);border-radius:20px;
+    padding:34px 28px;margin:26px auto 0;text-align:center;
+    box-shadow:0 10px 30px rgba(160,122,74,.10);display:none;animation:fadein .6s ease;
+  }
+  .exit-card.on{display:block}
+  .exit-card .k{font-family:"LXGW WenKai TC",serif;color:var(--ink);font-size:22px;font-weight:600;margin-bottom:8px}
+  .exit-card .d{font-size:14.5px;color:var(--body);margin-bottom:22px}
+  .btn{display:inline-block;background:var(--amber);color:#fff;font-size:16.5px;font-weight:700;text-decoration:none;padding:15px 42px;border-radius:999px;box-shadow:0 6px 18px rgba(200,145,46,.3);transition:transform .15s, background .15s}
+  .btn:hover{background:var(--amber-d);transform:translateY(-2px)}
   .btn:focus-visible{outline:3px solid var(--amber-d);outline-offset:3px}
-  .help{background:var(--help);border:1px solid var(--soft);border-radius:16px;padding:24px 30px;margin:56px auto 0;max-width:640px;text-align:center}
-  .help p{font-size:14.5px;color:var(--body);line-height:1.95}
+  .count-pill{display:inline-block;margin-top:16px;font-size:13.5px;color:var(--body);background:var(--cream);border:1px solid var(--soft);border-radius:999px;padding:8px 18px}
+  .count-pill b{color:var(--amber-d)}
+
+  /* ---- always-visible help ---- */
+  .help{background:var(--help);border:1px solid var(--soft);border-radius:16px;padding:18px 22px;margin:26px auto 0;text-align:center}
+  .help p{font-size:13.5px;color:var(--body);line-height:1.9}
   .help .num{font-weight:700;color:var(--amber-d)}
-  .coda{text-align:center;margin-top:48px}
-  .coda .thanks{font-family:"Noto Serif TC",serif;color:var(--ink);font-size:22px;font-weight:600}
-  .coda .bye{color:var(--body);font-size:16px;margin-top:12px}
-  .coda .fans{margin-top:26px;font-size:15px;color:var(--amber-d)}
-  .coda .fans a{color:var(--amber-d);font-weight:700;text-decoration:none;border-bottom:1.5px solid var(--soft);padding-bottom:1px}
-  .coda .fans a:hover{border-bottom-color:var(--amber)}
-  footer.credit{margin-top:50px;padding-top:22px;border-top:1px solid var(--line);text-align:center;font-size:11.5px;color:var(--faint);line-height:1.7}
-  @media (max-width:460px){
-    .wrap{padding:52px 0 46px}
-    h1{font-size:33px}
-    .eyebrow{letter-spacing:.5em;text-indent:.5em;font-size:14px}
-    .card{padding:30px 22px}
-    .help{padding:20px 20px}
+
+  footer.credit{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);text-align:center;font-size:11px;color:var(--faint);line-height:1.7}
+
+  @media (max-width:430px){
+    h1{font-size:25px}
+    .stage{padding:28px 18px 26px}
   }
-  @media (prefers-reduced-motion:reduce){ .btn{transition:none} }
+  @media (prefers-reduced-motion:reduce){
+    .scene,.exit-card{animation:none}
+    .candle.lit .flame{animation:none}
+    .chip,.nextbtn,.btn{transition:none}
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <p class="eyebrow">產　後　避　難　計　劃</p>
-  <h1>在最累的時刻，<br>給自己留一盞燈</h1>
+  <div class="topbar">
+    <span></span>
+    <a class="skip" href="postpartum-sanctuary-plan.pdf" download="產後避難計劃.pdf">不玩了，直接下載 →</a>
+  </div>
 
-  <p class="lede">
-    <span class="thin">不論你還在懷孕，或已經在產後的忙亂裡，這份計劃都是為你準備的。</span>
-  </p>
+  <p class="eyebrow">產後避難計劃</p>
+  <h1>逃出手忙腳亂的第一夜</h1>
+  <p class="lede">一個小小的逃脫遊戲，出口有一份真的能用的地圖。</p>
 
-  <span class="pill"><span class="flame">🕯</span>目前已經有 <b id="dl-count">…</b> 位媽媽收下這份計劃</span>
+  <div class="lamps" aria-label="遊戲進度">
+    <div class="lamp" id="lamp1"><span class="bulb"></span>第一道門</div>
+    <div class="lamp" id="lamp2"><span class="bulb"></span>第二道門</div>
+    <div class="lamp" id="lamp3"><span class="bulb"></span>出口</div>
+  </div>
 
-  <div class="rule"></div>
+  <div class="stage" id="stage">
 
-  <div class="card">
-    <p class="k">產後避難計劃 · 可填寫表單</p>
-    <p class="d">你不需要一次填完，翻到哪一頁對你有用，就從哪裡開始。<br>準備好了，就把它收下。</p>
-    <a class="btn" href="postpartum-sanctuary-plan.pdf" download="產後避難計劃.pdf">下載產後避難計劃</a>
+    <!-- Scene 1 -->
+    <div class="scene on" id="s1">
+      <span class="door-tag">第 一 道 門</span>
+      <h2>凌晨兩點，有人敲門</h2>
+      <p class="hint">你剛把寶寶哄睡。門外站著好幾個人，此刻，你想讓誰進來？（點一個）</p>
+      <div class="chips" id="chips1">
+        <button class="chip" data-say="好選擇。會幫忙、不多話，就是天使。">🤝 會動手幫忙的那位</button>
+        <button class="chip" data-say="懂你的人進門，房間都安靜下來了。">💛 最懂你的閨蜜</button>
+        <button class="chip" data-say="專業的來了，你可以放心閉眼十分鐘。">🍲 月嫂／月子中心</button>
+        <button class="chip" data-say="有些日子，自己待著才是休息。門先關上，沒關係。">🚪 誰都先不要，我想靜一靜</button>
+      </div>
+      <p class="feedback" id="fb1"></p>
+      <button class="nextbtn" id="next1">門開了，往下走 →</button>
+    </div>
+
+    <!-- Scene 2 -->
+    <div class="scene" id="s2">
+      <span class="door-tag">第 二 道 門</span>
+      <h2>走廊上飄著今天沒做完的事</h2>
+      <p class="hint">它們擋住路了。挑一件「今晚先放掉」的，讓它熄滅。（點一個）</p>
+      <div class="chips" id="chips2">
+        <button class="chip">🧺 沒摺的衣服山</button>
+        <button class="chip">🍽 水槽裡的碗</button>
+        <button class="chip">💬 已讀未回的訊息</button>
+        <button class="chip">🧹 有點亂的地板</button>
+      </div>
+      <p class="feedback" id="fb2"></p>
+      <button class="nextbtn" id="next2">路通了，繼續走 →</button>
+    </div>
+
+    <!-- Scene 3 -->
+    <div class="scene" id="s3">
+      <span class="door-tag">出 口 前</span>
+      <h2>最後一關：黑黑的，需要一盞燈</h2>
+      <p class="hint">出口就在前面。點一下蠟燭，為自己點亮它。</p>
+      <div class="candle-zone">
+        <button class="candle" id="candle" aria-label="點亮蠟燭">
+          <svg width="120" height="150" viewBox="0 0 120 150" role="img" aria-hidden="true">
+            <circle class="glowring" cx="60" cy="40" r="36" fill="#F6C560" opacity=".22"/>
+            <g class="flame">
+              <path d="M60 8 C74 26 72 44 60 54 C48 44 46 26 60 8 Z" fill="#F6C560"/>
+              <path d="M60 22 C67 32 66 42 60 48 C54 42 53 32 60 22 Z" fill="#FBF3DE"/>
+            </g>
+            <rect x="48" y="56" width="24" height="62" rx="5" fill="#EAD9B4"/>
+            <rect x="48" y="56" width="9" height="62" rx="4" fill="#F3E7CC"/>
+            <ellipse cx="60" cy="122" rx="30" ry="8" fill="#E4D2A8"/>
+          </svg>
+        </button>
+      </div>
+      <p class="feedback" id="fb3"></p>
+      <button class="nextbtn" id="next3">燈亮了，推開出口 →</button>
+    </div>
+
+  </div>
+
+  <!-- Exit / download -->
+  <div class="exit-card" id="exit">
+    <p class="k">🎉 恭喜逃出第一夜</p>
+    <p class="d">獎品不是玩具，是一份真的能用的地圖：<br>產後避難計劃，可填寫、可列印，慢慢填就好。</p>
+    <a class="btn" href="postpartum-sanctuary-plan.pdf" download="產後避難計劃.pdf">收下我的避難計劃</a>
+    <div class="count-pill">🕯 目前已經有 <b id="dl-count">…</b> 位媽媽收下這份計劃</div>
   </div>
 
   <div class="help">
     <p>
-      如果需要找人說說話：<br>
+      不管玩到哪一關，如果需要找人說說話：<br>
       <span class="num">1925</span> 安心專線（依舊愛我，24 小時）<br>
       <span class="num">0800-870-870</span> 孕產婦關懷專線（抱緊您，週一至週五 9–17 時）
     </p>
-  </div>
-
-  <div class="coda">
-    <p class="thanks">謝謝你，願意好好照顧自己。</p>
-    <p class="bye">晚安，媽媽，你值得休息一下。🌙</p>
-    <p class="fans">🕯 想聽更多，來粉專找我們聊聊，追蹤 <a href="https://www.facebook.com/dearmama.tw" target="_blank" rel="noopener">《媽媽，你睡了嗎？》粉絲專頁</a></p>
   </div>
 
   <footer class="credit">
@@ -119,16 +252,68 @@
 </div>
 
 <script>
+  const DEMO = false; // 正式版：下載時累加計數
+
+  // --- counter (read only in demo) ---
   const BASE = "https://countapi.mileshilliard.com/api/v1";
   const KEY  = "dearmama-sanctuary-plan-v2";
-  const elCount = document.getElementById("dl-count");
   fetch(`${BASE}/get/${KEY}`).then(r=>r.json())
-    .then(d=>{ if(typeof d.value==="number") elCount.textContent=d.value; })
-    .catch(()=>{ elCount.textContent="許多"; });
-  document.querySelector(".btn").addEventListener("click", ()=>{
-    fetch(`${BASE}/hit/${KEY}`).then(r=>r.json())
-      .then(d=>{ if(typeof d.value==="number") elCount.textContent=d.value; })
-      .catch(()=>{});
+    .then(d=>{ if(typeof d.value==="number") document.getElementById("dl-count").textContent=d.value; })
+    .catch(()=>{ document.getElementById("dl-count").textContent="許多"; });
+  if(!DEMO){
+    document.querySelectorAll(".btn,.skip").forEach(el=>{
+      el.addEventListener("click",()=>{ fetch(`${BASE}/hit/${KEY}`).catch(()=>{}); });
+    });
+  }
+
+  const lamp = n => document.getElementById("lamp"+n).classList.add("lit");
+  const show = id => {
+    document.querySelectorAll(".scene").forEach(s=>s.classList.remove("on"));
+    document.getElementById(id).classList.add("on");
+  };
+
+  // --- Scene 1: pick a person ---
+  const fb1 = document.getElementById("fb1");
+  const next1 = document.getElementById("next1");
+  document.getElementById("chips1").addEventListener("click", e=>{
+    const c = e.target.closest(".chip"); if(!c) return;
+    document.querySelectorAll("#chips1 .chip").forEach(x=>x.classList.remove("picked"));
+    c.classList.add("picked");
+    fb1.textContent = c.dataset.say;
+    lamp(1); next1.classList.add("show");
+  });
+  next1.addEventListener("click", ()=> show("s2"));
+
+  // --- Scene 2: let one chore go ---
+  const fb2 = document.getElementById("fb2");
+  const next2 = document.getElementById("next2");
+  const sayings2 = [
+    "咻——它熄滅了。世界沒有因此毀滅。",
+    "放掉的瞬間，走廊亮了一點。",
+    "它明天還會在，但今晚不歸你管。",
+    "很好，這件事現在正式與你無關。"
+  ];
+  document.getElementById("chips2").addEventListener("click", e=>{
+    const c = e.target.closest(".chip"); if(!c || c.classList.contains("gone")) return;
+    c.classList.add("gone");
+    fb2.textContent = sayings2[Math.floor(Math.random()*sayings2.length)];
+    lamp(2); next2.classList.add("show");
+  });
+  next2.addEventListener("click", ()=> show("s3"));
+
+  // --- Scene 3: light the candle ---
+  const candle = document.getElementById("candle");
+  const fb3 = document.getElementById("fb3");
+  const next3 = document.getElementById("next3");
+  candle.addEventListener("click", ()=>{
+    candle.classList.add("lit");
+    fb3.textContent = "燈亮了。其實你一直都找得到路，只是需要有人陪你點燈。";
+    lamp(3); next3.classList.add("show");
+  });
+  next3.addEventListener("click", ()=>{
+    document.getElementById("stage").style.display="none";
+    document.querySelector(".lamps").scrollIntoView({behavior:"smooth"});
+    document.getElementById("exit").classList.add("on");
   });
 </script>
 </body>
