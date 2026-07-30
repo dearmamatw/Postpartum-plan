@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>產後避難計劃 · 線上填寫 ·《媽媽，你睡了嗎？》</title>
+<meta name="description" content="直接在手機上填寫你的產後避難計劃，自動儲存，隨時回來繼續。">
+<style>
+  @font-face{
+    font-family:"LXGW WenKai TC";
+    src:url("wenkai-tc-regular-subset.woff2") format("woff2");
+    font-weight:400;font-style:normal;font-display:swap;
+  }
+  @font-face{
+    font-family:"LXGW WenKai TC";
+    src:url("wenkai-tc-medium-subset.woff2") format("woff2");
+    font-weight:500 700;font-style:normal;font-display:swap;
+  }
+  :root{
+    --cream:#FBF6EC; --cream-2:#F5ECDA; --soft:#EFE2C6;
+    --amber:#C8912E; --amber-d:#9E6E1C; --gold:#F6C560;
+    --ink:#3A3222; --body:#6B6252; --faint:#A99C86; --line:#E4D6BA; --help:#FBEFD6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:"LXGW WenKai TC",sans-serif;color:var(--body);line-height:1.9;
+    background:var(--cream);
+    background-image:radial-gradient(ellipse 75% 40% at 50% 8%, #FEFCF5 0%, var(--cream) 60%, #F3EAD6 100%);
+    min-height:100vh;padding:0 16px 60px;
+  }
+  .wrap{max-width:640px;margin:0 auto;padding:30px 0 0}
+  .eyebrow{text-align:center;color:var(--amber);font-size:13px;font-weight:600;letter-spacing:.5em;text-indent:.5em;margin-bottom:10px}
+  h1{text-align:center;color:var(--ink);font-size:26px;font-weight:700;line-height:1.4}
+  .lede{text-align:center;font-size:14px;margin-top:10px}
+  .privacy{
+    background:var(--cream-2);border:1px solid var(--soft);border-radius:14px;
+    padding:12px 18px;margin:18px auto 0;font-size:12.5px;color:var(--faint);text-align:center;line-height:1.8;
+  }
+
+  /* helplines first */
+  .help{background:var(--help);border:1px solid var(--soft);border-radius:16px;padding:16px 20px;margin:18px auto 0;text-align:center}
+  .help p{font-size:13px;line-height:1.9}
+  .help .num{font-weight:700;color:var(--amber-d)}
+
+  /* section cards */
+  section.card{
+    background:#FFFDF7;border:1px solid var(--soft);border-radius:20px;
+    padding:26px 22px;margin:22px auto 0;box-shadow:0 8px 24px rgba(160,122,74,.07);
+  }
+  section.card h2{color:var(--amber-d);font-size:19px;font-weight:700;margin-bottom:2px}
+  section.card .sub{font-size:12.5px;color:var(--faint);margin-bottom:16px}
+  .blk h3{color:var(--amber);font-size:15px;font-weight:700;margin:18px 0 4px}
+  .blk .hint{font-size:12px;color:var(--faint);margin-bottom:8px}
+  label.q{display:block;font-size:14.5px;color:var(--ink);margin:14px 0 6px}
+  textarea, input[type=text], input[type=date]{
+    width:100%;background:var(--cream);border:1.5px solid var(--line);border-radius:12px;
+    font-family:inherit;font-size:15px;color:var(--ink);padding:11px 14px;line-height:1.7;
+  }
+  textarea{min-height:64px;resize:vertical}
+  textarea:focus, input:focus{outline:none;border-color:var(--amber);background:#FFFDF7}
+  .row2{display:flex;gap:10px}
+  .row2>div{flex:1}
+
+  .chk{display:flex;align-items:flex-start;gap:10px;margin:16px 0 2px;font-size:14px;color:var(--ink)}
+  .chk input{width:20px;height:20px;accent-color:var(--amber);margin-top:3px;flex:none}
+
+  /* chores table */
+  .chore{border-bottom:1px solid var(--line);padding:10px 0}
+  .chore:last-child{border-bottom:none}
+  .chore .name{font-size:14.5px;color:var(--ink);margin-bottom:7px}
+  .opts{display:flex;gap:8px}
+  .opts label{
+    flex:1;text-align:center;font-size:12.5px;padding:7px 4px;border:1.5px solid var(--line);
+    border-radius:999px;cursor:pointer;color:var(--body);background:var(--cream);
+    transition:all .15s ease;user-select:none;
+  }
+  .opts input{display:none}
+  .opts input:checked+span{font-weight:700}
+  .opts label:has(input:checked){background:var(--amber);border-color:var(--amber-d);color:#fff}
+  .reflect{
+    background:var(--help);border-radius:12px;padding:14px 16px;margin-top:16px;
+    font-size:13.5px;color:var(--ink);line-height:1.9;
+  }
+
+  .optional-tag{
+    display:inline-block;background:var(--cream-2);border:1px dashed var(--line);border-radius:999px;
+    font-size:11.5px;color:var(--faint);padding:3px 12px;margin-bottom:10px;
+  }
+
+  .keep-tip{margin-top:22px;font-size:12.5px;color:var(--faint);text-align:center;line-height:1.8}
+
+  /* actions bar */
+  .actions{
+    position:sticky;bottom:12px;display:flex;gap:10px;margin-top:26px;
+  }
+  .actions button{
+    flex:1;font-family:inherit;font-size:14.5px;font-weight:700;border:none;border-radius:999px;
+    padding:14px 10px;cursor:pointer;transition:transform .15s;
+  }
+  .actions .save-state{
+    flex:1.2;background:var(--cream-2);border:1px solid var(--soft);color:var(--faint);
+    font-size:12.5px;font-weight:400;display:flex;align-items:center;justify-content:center;border-radius:999px;
+  }
+  .btn-print{background:var(--amber);color:#fff;box-shadow:0 6px 18px rgba(200,145,46,.3)}
+  .btn-print:hover{background:var(--amber-d)}
+  .btn-clear{background:var(--cream-2);border:1px solid var(--soft);color:var(--body)}
+
+  .closing{text-align:center;margin-top:30px}
+  .closing .big{color:var(--ink);font-size:17px;font-weight:700;line-height:2}
+  .backlink{display:block;text-align:center;margin-top:22px;font-size:13.5px;color:var(--amber-d);text-decoration:none;font-weight:700}
+  footer.credit{margin-top:30px;padding-top:16px;border-top:1px solid var(--line);text-align:center;font-size:10.5px;color:var(--faint);line-height:1.7}
+
+  @media print{
+    body{background:#fff;padding:0}
+    .actions,.backlink,.privacy{display:none}
+    section.card{box-shadow:none;border-color:#ddd;break-inside:avoid}
+    textarea, input[type=text], input[type=date]{border-color:#ccc;background:#fff}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">產後避難計劃</p>
+  <h1>直接在這裡填，就可以了</h1>
+  <p class="lede">不用下載、不用安裝，填到一半離開也沒關係。</p>
+  <p class="privacy">🔒 你填的每一個字，都只存在你自己的手機裡，不會傳到任何地方。</p>
+
+  <div class="help">
+    <p>
+      先把這個記下來，如果需要找人說說話：<br>
+      <span class="num">1925</span> 安心專線（依舊愛我，24 小時）<br>
+      <span class="num">0800-870-870</span> 孕產婦關懷專線（抱緊您，週一至週五 9–17 時）
+    </p>
+  </div>
+
+  <!-- 一 -->
+  <section class="card">
+    <h2>一、身體照顧計劃</h2>
+    <p class="sub">不同時期的訪客名單 · 恢復體能的充電須知 · 找回自己的那些小事</p>
+
+    <div class="row2">
+      <div>
+        <label class="q" for="f_name">這是誰的產後避難計劃</label>
+        <input type="text" id="f_name" data-k="name" placeholder="你的名字">
+      </div>
+      <div>
+        <label class="q" for="f_date">撰寫日期</label>
+        <input type="date" id="f_date" data-k="date">
+      </div>
+    </div>
+
+    <div class="blk">
+      <h3>不同時期的訪客名單</h3>
+      <p class="hint">產後復原有它的節奏。不是每個人都適合在每個階段出現，這無關親疏，是關於此刻我需要什麼。</p>
+      <label class="q">急性復原期（還在出血、身體最脆弱）：我只想要誰在身邊？誰先請他晚點來？</label>
+      <textarea data-k="v1"></textarea>
+      <label class="q">身體調整期（有好一點了，但還是很累）：這時我歡迎誰來搭把手？</label>
+      <textarea data-k="v2"></textarea>
+      <label class="q">重新連結期（開始想見人了）：我想先找回和誰的連結？</label>
+      <textarea data-k="v3"></textarea>
+    </div>
+
+    <div class="blk">
+      <h3>恢復體能的充電須知</h3>
+      <p class="hint">先為身體的基本需求做主，不必等到最累的時候才臨時決定。</p>
+      <label class="q">睡眠：我知道自己被剝奪睡眠會變成什麼樣子。誰能幫我照顧寶寶，讓我好好睡一下？</label>
+      <textarea data-k="b1"></textarea>
+      <label class="q">進食：什麼樣的食物會讓我恢復體力和能量？有哪幾樣是我一定要吃到的？有什麼不想吃的？</label>
+      <textarea data-k="b2"></textarea>
+      <label class="q">身體接觸：我需要多一點擁抱，或是接受身體按摩嗎？可以跟誰說？可以怎麼安排？</label>
+      <textarea data-k="b3"></textarea>
+      <label class="chk"><input type="checkbox" data-k="rest_ok">這一段，我允許自己「只是休息」，不必有生產力。</label>
+    </div>
+
+    <div class="blk">
+      <h3>找回自己的那些小事</h3>
+      <p class="hint">產後如果覺得有點慌張、有點力不從心，先想好幾件能讓我找回自己的小事。</p>
+      <label class="q">能讓我快速恢復能量，或是使我內心感到平靜喜悅的小事：</label>
+      <textarea data-k="s1"></textarea>
+      <label class="q">有陽光、有風的角落，我抱著孩子也能待一下的地方：</label>
+      <textarea data-k="s2"></textarea>
+    </div>
+  </section>
+
+  <!-- 二 -->
+  <section class="card">
+    <h2>二、支持者計劃</h2>
+    <p class="sub">支持者可以是伴侶，也可以是月嫂、長輩、閨蜜，甚至是你自己</p>
+    <p class="hint">若身邊沒有那個現成的隊友，這就是你為自己主動搭建支持網的起點。</p>
+
+    <div class="blk">
+      <h3>先盤點：我的支持圈有誰？</h3>
+      <label class="q">我可以毫無保留說出真實感受，對方不會評價的人：</label>
+      <textarea data-k="c1"></textarea>
+      <label class="q">我想洗澡的時候，可以幫我抱一下孩子的人：</label>
+      <textarea data-k="c2"></textarea>
+      <label class="q">遇到困難的育兒決定時，我覺得安全的傾訴對象：</label>
+      <textarea data-k="c3"></textarea>
+      <label class="q">我希望每週來看我一次的人：</label>
+      <textarea data-k="c4"></textarea>
+    </div>
+
+    <div class="blk">
+      <h3>再約定：我允許他們用什麼方式陪我？</h3>
+      <p class="hint">挑一到兩位主要支持者，各自想一想、有機會就交換答案。</p>
+      <label class="q">我的愛之語（肯定話語/精心時刻/服務/身體接觸/送禮）：</label>
+      <textarea data-k="a1"></textarea>
+      <label class="q">我承受壓力時的樣子是什麼？我和支持者，怎麼看得出彼此在硬撐？</label>
+      <textarea data-k="a2"></textarea>
+      <label class="q">我在硬撐時希望對方怎麼幫我？可以有什麼「一起接住壓力」的默契？</label>
+      <textarea data-k="a3"></textarea>
+    </div>
+
+    <div class="blk">
+      <h3>說出口：三句我允許自己說出口的話</h3>
+      <p class="hint">產後我們常把需求吞下去，覺得說了就是麻煩別人。這裡，練習把它說出來，不管對支持者，或是先對自己。</p>
+      <label class="q">我想被看見的是：（希望有人知道我正在承受什麼）</label>
+      <textarea data-k="t1"></textarea>
+      <label class="q">我需要被接住的是：（什麼時刻我最需要有人陪伴）</label>
+      <textarea data-k="t2"></textarea>
+      <label class="q">我希望被信任的是：（我希望別人相信我的方式和決定）</label>
+      <textarea data-k="t3"></textarea>
+    </div>
+  </section>
+
+  <!-- 三 -->
+  <section class="card">
+    <h2>三、家庭分工合作計畫</h2>
+    <p class="sub">產後最消耗人的，其實不是家務本身，而是「覺得自己應該要做到」的那份執念</p>
+    <p class="hint">下面這些產後常見的事，一項一項圈：這件事，你想放掉、交出去、還是想自己來？不用寫字，圈就好。</p>
+    <div id="chores"></div>
+    <div class="reflect">
+      你圈了幾個「我想自己來」？那一欄，往往不是別人要求你的，是你對自己的要求。光是看見他們，你已經跨出了第一步。
+    </div>
+    <p class="hint" style="margin-top:10px">台灣情境：月嫂、鐘點打掃、送洗、家人輪班，這些都是「交出去」的好選擇。把花錢買休息，當成復原投資。</p>
+  </section>
+
+  <!-- 四 -->
+  <section class="card">
+    <h2>四、如果你身邊有人，這一頁想邀他一起</h2>
+    <p class="sub">看見・接住・信任，這次，換成我們一起計畫</p>
+    <span class="optional-tag">這一頁是選擇性的。如果現在沒有那個人，可以跳過它，前面那些，依然完整屬於你。</span>
+
+    <div class="blk">
+      <h3>先各自想，再一起對答案</h3>
+      <p class="hint">一人一句，說出口，或寫下來交換。</p>
+      <label class="q">被看見：我最需要你看見的是＿＿；我猜你最需要我看見的是＿＿</label>
+      <textarea data-k="p1"></textarea>
+      <label class="q">被接住：我最需要你接住的時刻是＿＿；我能為你接住的是＿＿</label>
+      <textarea data-k="p2"></textarea>
+      <label class="q">被信任：我希望你信任我的是＿＿；我信任你的是＿＿</label>
+      <textarea data-k="p3"></textarea>
+    </div>
+
+    <div class="blk">
+      <h3>產後很常吵的三件事，我們可以先講好</h3>
+      <p class="hint">不是為了吵，是為了在還沒累到爆炸前，先有共識。</p>
+      <label class="q">夜間分工：半夜誰來照顧寶寶？怎麼輪流和分工？（睡眠剝奪是引發產後衝突的第一名）</label>
+      <textarea data-k="n1"></textarea>
+      <label class="q">訪客與長輩：可以讓誰來拜訪？可以住多久？界線由誰來守以及怎麼守？</label>
+      <textarea data-k="n2"></textarea>
+      <label class="q">當我崩潰時：如果我情緒崩潰時，我希望你怎麼做？什麼反而會讓我更糟？</label>
+      <textarea data-k="n3"></textarea>
+    </div>
+
+    <div class="blk">
+      <h3>一個我們的暗號</h3>
+      <p class="hint">當其中一個人快撐不住時，可以說一句只有我們懂的暗號，對方就知道：現在該我接手了，不用多問。</p>
+      <label class="q">我們的暗號是：</label>
+      <input type="text" data-k="signal">
+    </div>
+  </section>
+
+  <!-- 最後 -->
+  <section class="card">
+    <div class="closing">
+      <p class="big">你照顧孩子，也值得被人照顧。<br>
+      這份計劃不是要你做得更完美，<br>
+      是先幫你想好，讓你在最脆弱的那幾個禮拜，<br>
+      可以名正言順地休息、被照顧、被接住。</p>
+    </div>
+    <p class="hint" style="margin-top:16px;text-align:center">
+      找專業資源時，建議依「類型」去查當下最準的資訊：婦產科產後回診、泌乳協助、骨盆底物理治療、身心科/社區心理衛生中心、月嫂與月子中心。任何身體或情緒的警訊，請以你的醫療團隊評估為準。
+    </p>
+    <p class="hint" style="text-align:center;color:var(--amber-d)">
+      若你或身邊的媽媽，出現想傷害自己或無法照顧孩子的念頭，請立即撥打最上面的求助專線，或前往急診。
+    </p>
+  </section>
+
+  <p class="keep-tip">💡 填完記得按「列印 / 存成 PDF」留一份，因為換手機或清除瀏覽器資料時，這裡的答案不會跟著走。</p>
+
+  <div class="actions">
+    <div class="save-state" id="saveState">✓ 會自動儲存</div>
+    <button class="btn-print" onclick="window.print()">列印 / 存成 PDF</button>
+    <button class="btn-clear" id="clearBtn">清除重填</button>
+  </div>
+
+  <a class="backlink" href="index.html">← 回到逃脫遊戲</a>
+
+  <footer class="credit">
+    本表啟發自 Kimberly Ann Johnson《The Fourth Trimester》，<br>
+    由《媽媽，你睡了嗎？》依台灣情境原創設計，僅供參考。
+  </footer>
+
+</div>
+
+<script>
+  const KEY = "sanctuary-plan-fill-v1";
+
+  // build chores list
+  const chores = [
+    "洗碗、收拾廚房","煮正餐／熱月子餐","洗衣、曬衣、摺衣","拖地、吸地、擦桌",
+    "倒垃圾、跑腿買日用品","準備寶寶副食品","幫寶寶洗澡","哄睡（夜奶、拍睡）",
+    "回覆親友訊息、安排訪客","大寶的接送、陪伴"
+  ];
+  const opts = ["放掉","交出去","我想自己來"];
+  const zone = document.getElementById("chores");
+  chores.forEach((c,i)=>{
+    const div = document.createElement("div");
+    div.className = "chore";
+    div.innerHTML = `<div class="name">${c}</div>
+      <div class="opts">` +
+      opts.map((o,j)=>`<label><input type="radio" name="ch${i}" value="${j}" data-k="ch${i}"><span>${o}</span></label>`).join("") +
+      `</div>`;
+    zone.appendChild(div);
+  });
+
+  // ---- autosave ----
+  const state = JSON.parse(localStorage.getItem(KEY) || "{}");
+  const saveState = document.getElementById("saveState");
+  let saveTimer;
+
+  function restore(){
+    document.querySelectorAll("[data-k]").forEach(el=>{
+      const k = el.dataset.k;
+      if(!(k in state)) return;
+      if(el.type === "checkbox") el.checked = !!state[k];
+      else if(el.type === "radio"){ if(el.value === state[k]) el.checked = true; }
+      else el.value = state[k];
+    });
+  }
+  function persist(){
+    localStorage.setItem(KEY, JSON.stringify(state));
+    saveState.textContent = "✓ 已儲存";
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(()=>{ saveState.textContent = "✓ 會自動儲存"; }, 1500);
+  }
+  document.addEventListener("input", e=>{
+    const el = e.target; const k = el.dataset.k;
+    if(!k) return;
+    if(el.type === "checkbox") state[k] = el.checked;
+    else state[k] = el.value;
+    persist();
+  });
+  document.getElementById("clearBtn").addEventListener("click", ()=>{
+    if(confirm("確定要清空所有已填的內容嗎？清掉就找不回來了喔。")){
+      localStorage.removeItem(KEY);
+      location.reload();
+    }
+  });
+  restore();
+</script>
+</body>
+</html>

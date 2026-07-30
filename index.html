@@ -132,7 +132,10 @@
   .btn{display:inline-block;background:var(--amber);color:#fff;font-size:16.5px;font-weight:700;text-decoration:none;padding:15px 42px;border-radius:999px;box-shadow:0 6px 18px rgba(200,145,46,.3);transition:transform .15s, background .15s}
   .btn:hover{background:var(--amber-d);transform:translateY(-2px)}
   .btn:focus-visible{outline:3px solid var(--amber-d);outline-offset:3px}
+  .btn-alt{background:var(--cream);color:var(--amber-d);border:1.5px solid var(--soft);box-shadow:none;font-size:14.5px;padding:12px 34px}
+  .btn-alt:hover{background:var(--cream-2)}
   .count-pill{display:inline-block;margin-top:16px;font-size:13.5px;color:var(--body);background:var(--cream);border:1px solid var(--soft);border-radius:999px;padding:8px 18px}
+  .mobile-tip{margin-top:14px;font-size:12.5px;color:var(--faint);line-height:1.8;text-align:center}
   .count-pill b{color:var(--amber-d)}
 
   /* ---- always-visible help ---- */
@@ -232,8 +235,11 @@
   <div class="exit-card" id="exit">
     <p class="k">🎉 恭喜逃出第一夜</p>
     <p class="d">獎品不是玩具，是一份真的能用的地圖：<br>產後避難計劃，可填寫、可列印，慢慢填就好。</p>
-    <a class="btn" href="postpartum-sanctuary-plan.pdf" download="產後避難計劃.pdf">收下我的避難計劃</a>
+    <a class="btn" href="fill.html">📱 直接在手機上填</a>
+    <div style="height:10px"></div>
+    <a class="btn btn-alt" href="postpartum-sanctuary-plan.pdf" download="產後避難計劃.pdf">下載 PDF 版</a>
     <div class="count-pill">🕯 目前已經有 <b id="dl-count">…</b> 位媽媽收下這份計劃</div>
+    <p class="mobile-tip">📱 手機建議選「直接在手機上填」，會自動儲存。PDF 版適合用電腦填寫，或印出來手寫。</p>
   </div>
 
   <div class="help">
